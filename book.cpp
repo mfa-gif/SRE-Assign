@@ -42,6 +42,20 @@ public:
         cout << "Pages: " << pages << endl;
     }
 
+      void updateDetails(string n, string g, string a, float p, int page)
+    {
+        name = n;
+        genre = g;
+        author = a;
+        price = p;
+        pages = page;
+    }
+
+    void applyDiscount(float discountPercentage)
+    {
+        price =price- (price * (discountPercentage / 100));
+    }
+
 };
 
 int main()
@@ -93,6 +107,62 @@ int main()
             Book newBook(name, genre, author, price, pages);
             book = newBook;  
             break;
+        }
+         case 2:
+        {
+            book.display();
+            break;
+        }
+        case 3: 
+            {
+            float discountPercentage;
+            cout << "Enter discount percentage: ";
+            cin >> discountPercentage;
+            book.applyDiscount(discountPercentage);
+            cout << "Discount applied successfully." << endl;
+            break;
+        }
+        case 4:
+            {
+            string name, genre, author;
+            float price;
+            int pages;
+
+            cout << "Update Book Details" << endl;
+            cout << "Enter new book name: ";
+            cin >> name;
+            cout << "Enter new genre: ";
+            cin >> genre;
+            cout << "Enter new author: ";
+            cin >> author;
+
+            
+            do {
+                cout << "Enter price (greater than equal 0): ";
+                cin >> price;
+            } while (price <= 0);
+            do
+            {
+                cout << "Enter new number of pages (greater than 0): ";
+                cin >> pages;
+            } while (pages < 1);
+
+            book.updateDetails(name, genre, author, price, pages);
+            cout << "Book details updated successfully." << endl;
+            break;
+        }
+        case 5:
+            cout << "Exiting..." << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+        }
+
+        
+        if (choice != 5) 
+        {
+            cout << "Do you want to continue? (y/n): ";
+            cin >> continueChoice;
         }
 
 
