@@ -33,6 +33,14 @@ public:
         price = p;
         pages = page; 
     }
+    void display()
+    {
+        cout << "Book Name: " << name << endl;
+        cout << "Genre: " << genre << endl;
+        cout << "Author: " << author << endl;
+        cout << "Price: " << price << endl;
+        cout << "Pages: " << pages << endl;
+    }
 
 };
 
@@ -53,6 +61,39 @@ int main()
         cout << "5. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
+         switch (choice)
+        {
+        case 1: 
+        {
+            string name, genre, author;
+            float price;
+            int pages;
+
+            cout << "Enter book name: ";
+            cin >> name;
+            cout << "Enter genre: ";
+            cin >> genre;
+            cout << "Enter author: ";
+            cin >> author;
+
+            
+            do 
+            {
+                cout << "Enter price (greater than equal 0): ";
+                cin >> price;
+            } while (price <= 0);
+          
+            do
+            {
+                cout << "Enter number of pages (greater than 0): ";
+                cin >> pages;
+            } while (pages < 1 );
+
+           
+            Book newBook(name, genre, author, price, pages);
+            book = newBook;  
+            break;
+        }
 
 
 
